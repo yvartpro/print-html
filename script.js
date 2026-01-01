@@ -33,6 +33,10 @@ function generatePDF() {
     }
   };
 
+  // PRE-PROCESS: Reset height to prevent "A4 + Margins = 2 Pages" overflow
+  const originalMinHeight = element.style.minHeight;
+  element.style.minHeight = "0";
+
   html2pdf()
     .set(opt)
     .from(element)
@@ -49,7 +53,8 @@ function generatePDF() {
       URL.revokeObjectURL(url);
     })
     .then(() => {
-      // Reset UI
+      // POST-PROCESS: Restore UI
+      element.style.minHeight = originalMinHeight; // Restore aesthetics
       if (button) {
         button.disabled = false;
         button.innerText = originalText;
@@ -57,6 +62,7 @@ function generatePDF() {
       document.body.style.cursor = "default";
     })
     .catch((err) => {
+      element.style.minHeight = originalMinHeight; // Restore aesthetics
       console.error("PDF Generation Error:", err);
       alert("Error: PDF generation failed");
       if (button) {
