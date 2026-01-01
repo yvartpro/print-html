@@ -13,33 +13,36 @@ function generatePDF() {
   const filename = `activity_report_${new Date().toISOString().slice(0, 10)}.pdf`;
 
   const opt = {
-    margin: 15,
-    filename: filename, // Fallback
+    margin: [10, 15], // Vertical: 10mm, Horizontal: 15mm
+    filename: filename,
     image: { type: "jpeg", quality: 0.98 },
     html2canvas: {
       scale: 2,
       useCORS: true,
-      scrollY: 0
+      scrollY: 0,
+      backgroundColor: '#ffffff' // FORCE white background to avoid black artifacts
     },
     jsPDF: {
       unit: "mm",
       format: "a4",
       orientation: "portrait"
     },
-    pagebreak: { mode: ['css', 'legacy'] }
+    pagebreak: {
+      mode: ['css', 'legacy'],
+      avoid: ['tr', '.info-text']
+    }
   };
 
   html2pdf()
     .set(opt)
     .from(element)
     .toPdf()
-    .output('blob') // Get blob instead of saving directly
+    .output('blob')
     .then((blob) => {
-      console.log("PDF Blob generated, size:", blob.size);
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = filename; // FORCE filename here
+      link.download = filename;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -55,7 +58,7 @@ function generatePDF() {
     })
     .catch((err) => {
       console.error("PDF Generation Error:", err);
-      alert("Error: " + err.message);
+      alert("Error: PDF generation failed");
       if (button) {
         button.disabled = false;
         button.innerText = originalText;
