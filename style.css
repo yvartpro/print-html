@@ -1,0 +1,68 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #111;
+  font-family: Arial, sans-serif;
+}
+
+/* PDF ROOT */
+.pdf {
+  width: 210mm;
+  background: white;
+  margin: auto;
+}
+
+/* 🔑 THIS IS THE MAGIC */
+.page-padding {
+  padding: 15mm;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 10mm;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.header p {
+  margin: 4px 0 0;
+  font-size: 12px;
+}
+
+/* CONTENT */
+.content {
+  font-size: 12px;
+}
+
+/* TABLE EXAMPLE (optional) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #333;
+  padding: 4px;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 10mm;
+  font-size: 10px;
+  text-align: right;
+}
+
+/* PRINT RULES */
+@media print {
+  .page-padding {
+    page-break-inside: avoid;
+  }
+}
