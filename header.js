@@ -22,7 +22,7 @@ export const header = `
   <!-- Document title -->
   <div class="mt-6 bg-green-50 border-l-4 border-green-900 px-4 py-2">
     <h2 class="text-lg font-semibold text-green-900">
-      Website Development — Proforma Invoice
+      Official University Website Development — Scope of Work & Project Phases
     </h2>
   </div>
 </section>
