@@ -56,9 +56,9 @@ function generatePDF() {
     }
   };
 
-  // PRE-PROCESS: Reset height to prevent "A4 + Margins = 2 Pages" overflow
+  // PRE-PROCESS: Maintain height to keep sticky footer, but fit A4 to avoid overflow
   const originalMinHeight = element.style.minHeight;
-  element.style.minHeight = "0";
+  element.style.minHeight = "277mm"; // A4 (297mm) - Margins (10mm * 2) = 277mm
 
   html2pdf()
     .set(opt)

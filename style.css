@@ -100,11 +100,13 @@ body {
 
   .pdf-container {
     width: 100%;
-    min-height: 0;
-    /* Fixes blank second page */
+    min-height: 277mm;
+    /* Maintain height for sticky footer */
+    display: flex;
+    flex-direction: column;
     margin: 0;
     box-shadow: none;
-    padding: 0 5mm;
+    padding: 0;
   }
 
 
