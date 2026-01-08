@@ -46,6 +46,8 @@ body {
   /* Default A4 margins */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 /* HEADER */
@@ -54,6 +56,11 @@ body {
   margin-bottom: 2rem;
   border-bottom: 2px solid #eee;
   padding-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.report-content {
+  flex: 1;
 }
 
 .report-header h1 {
@@ -77,6 +84,7 @@ body {
   color: #95a5a6;
   border-top: 1px solid #eee;
   padding-top: 1rem;
+  flex-shrink: 0;
 }
 
 /* PRINT MEDIA QUERIES */
