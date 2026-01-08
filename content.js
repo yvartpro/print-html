@@ -1,5 +1,5 @@
 export const content = `
-<main class="report-content text-sm text-gray-800">
+<main class="text-sm text-gray-800">
 
   <!-- Customer Information -->
   <section class="mb-6">

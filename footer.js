@@ -1,5 +1,5 @@
 export const footer = `
-<footer class="report-footer text-center text-xs text-gray-500">
+<footer class="text-center text-xs text-gray-500">
   <p class="font-medium text-green-900">
     GIRASO — Digital solutions rooted in African values
   </p>

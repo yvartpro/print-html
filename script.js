@@ -2,7 +2,6 @@ import { header } from './header.js'
 import { content } from './content.js'
 import { footer } from './footer.js'
 
-// Inject dynamic html on module load
 const docHeader = document.getElementById('header')
 const docContent = document.getElementById('content')
 const docFooter = document.getElementById('footer')
@@ -11,7 +10,6 @@ if (docHeader) docHeader.innerHTML = header
 if (docContent) docContent.innerHTML = content
 if (docFooter) docFooter.innerHTML = footer
 
-// Setup Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
   const downloadBtn = document.getElementById('btn-download');
   if (downloadBtn) {
@@ -20,13 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function generatePDF() {
-  console.log('generatePDF')
-
   const element = document.getElementById("pdf-root");
   const button = document.getElementById("btn-download");
   const originalText = button ? button.innerText : "Download PDF";
 
-  // UI Feedback
   if (button) {
     button.disabled = true;
     button.innerText = "Generating...";
@@ -36,14 +31,14 @@ function generatePDF() {
   const filename = `activity_report_${new Date().toISOString().slice(0, 10)}.pdf`;
 
   const opt = {
-    margin: [10, 15], // Vertical: 10mm, Horizontal: 15mm
+    margin: [10, 15],
     filename: filename,
     image: { type: "jpeg", quality: 0.98 },
     html2canvas: {
       scale: 2,
       useCORS: true,
       scrollY: 0,
-      backgroundColor: '#ffffff' // FORCE white background to avoid black artifacts
+      backgroundColor: '#ffffff'
     },
     jsPDF: {
       unit: "mm",
@@ -56,9 +51,8 @@ function generatePDF() {
     }
   };
 
-  // PRE-PROCESS: Maintain height to keep sticky footer, but fit A4 to avoid overflow
   const originalMinHeight = element.style.minHeight;
-  element.style.minHeight = "277mm"; // A4 (297mm) - Margins (10mm * 2) = 277mm
+  element.style.minHeight = "277mm";
 
   html2pdf()
     .set(opt)
@@ -76,8 +70,7 @@ function generatePDF() {
       URL.revokeObjectURL(url);
     })
     .then(() => {
-      // POST-PROCESS: Restore UI
-      element.style.minHeight = originalMinHeight; // Restore aesthetics
+      element.style.minHeight = originalMinHeight;
       if (button) {
         button.disabled = false;
         button.innerText = originalText;
@@ -85,7 +78,7 @@ function generatePDF() {
       document.body.style.cursor = "default";
     })
     .catch((err) => {
-      element.style.minHeight = originalMinHeight; // Restore aesthetics
+      element.style.minHeight = originalMinHeight;
       console.error("PDF Generation Error:", err);
       alert("Error: PDF generation failed");
       if (button) {

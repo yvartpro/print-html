@@ -1,6 +1,6 @@
 export const header = `
-  <header class="report-header">
-  <div class="flex items-center justify-between gap-6">
+<section>
+  <div class="flex items-center justify-between gap-4">
 
     <!-- Logo -->
     <div class="w-16 h-16 flex items-center justify-center">
@@ -25,5 +25,5 @@ export const header = `
       Website Development — Proforma Invoice
     </h2>
   </div>
-</header>
+</section>
 `
