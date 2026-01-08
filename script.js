@@ -28,7 +28,7 @@ function generatePDF() {
   }
   document.body.style.cursor = "wait";
 
-  const filename = `activity_report_${new Date().toISOString().slice(0, 10)}.pdf`;
+  const filename = `Facture proformat.pdf`; // Enter your filename here
 
   const opt = {
     margin: [10, 5],
