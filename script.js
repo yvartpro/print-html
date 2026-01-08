@@ -31,7 +31,7 @@ function generatePDF() {
   const filename = `activity_report_${new Date().toISOString().slice(0, 10)}.pdf`;
 
   const opt = {
-    margin: [10, 15],
+    margin: [10, 5],
     filename: filename,
     image: { type: "jpeg", quality: 0.98 },
     html2canvas: {
