@@ -1,17 +1,14 @@
 export const header = `
   <header class="report-header">
-  <div class="flex items-center gap-6">
+  <div class="flex items-center justify-between gap-6">
 
     <!-- Logo -->
-    <div class="w-20 h-20 border-2 border-dashed border-green-900 flex items-center justify-center text-green-900 font-bold text-sm">
-      LOGO
+    <div class="w-16 h-16 flex items-center justify-center">
+      <img src="./giraso_logo.png" alt="Giraso Logo" class="w-full h-full object-contain">
     </div>
 
     <!-- Company Info -->
     <div class="flex-1">
-      <h1 class="text-2xl font-bold text-green-900 tracking-wide">
-        GIRASO
-      </h1>
       <p class="text-sm text-gray-600 max-w-lg">
         Software developer delivering digital solutions while preserving African core values
       </p>

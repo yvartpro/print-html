@@ -2,15 +2,25 @@ import { header } from './header.js'
 import { content } from './content.js'
 import { footer } from './footer.js'
 
-function generatePDF() {
-  // inject dynamic html into body
-  const docHeader = document.getElementById('header')
-  const docContent = document.getElementById('content')
-  const docFooter = document.getElementById('footer')
+// Inject dynamic html on module load
+const docHeader = document.getElementById('header')
+const docContent = document.getElementById('content')
+const docFooter = document.getElementById('footer')
 
-  docHeader.innerHTML = header
-  docContent.innerHTML = content
-  docFooter.innerHTML = footer
+if (docHeader) docHeader.innerHTML = header
+if (docContent) docContent.innerHTML = content
+if (docFooter) docFooter.innerHTML = footer
+
+// Setup Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const downloadBtn = document.getElementById('btn-download');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', generatePDF);
+  }
+});
+
+function generatePDF() {
+  console.log('generatePDF')
 
   const element = document.getElementById("pdf-root");
   const button = document.getElementById("btn-download");
