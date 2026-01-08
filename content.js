@@ -33,9 +33,9 @@ export const content = `
   </section>
 
   <!-- Total -->
-  <section class="mt-6">
+  <section class="mt-6 flex justify-between">
     <h3 class="text-green-900 font-semibold text-base mb-2">
-      Total Amount
+      Total Amount: 
     </h3>
     <p class="font-semibold text-lg text-green-900">925 000 – 965 000 FBu</p>
   </section>
