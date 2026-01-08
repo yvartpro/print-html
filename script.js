@@ -1,4 +1,17 @@
+import { header } from './header.js'
+import { content } from './content.js'
+import { footer } from './footer.js'
+
 function generatePDF() {
+  // inject dynamic html into body
+  const docHeader = document.getElementById('header')
+  const docContent = document.getElementById('content')
+  const docFooter = document.getElementById('footer')
+
+  docHeader.innerHTML = header
+  docContent.innerHTML = content
+  docFooter.innerHTML = footer
+
   const element = document.getElementById("pdf-root");
   const button = document.getElementById("btn-download");
   const originalText = button ? button.innerText : "Download PDF";
